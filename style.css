@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 html {
   box-sizing: border-box;
@@ -7,8 +7,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: whitesmoke;
   font-family: "Cormorant Garamond", sans-serif;
+  background: whitesmoke; 
 }
 
 h1 {
@@ -27,7 +27,7 @@ h1 {
   bottom: 0;
   left: 0;
   right: 0;
-  /* background: rgba(255, 255, 255, 0.2); */
+  /* background: rgba(255, 255, 255, 0.8); */
 }
 
 .loader img {
