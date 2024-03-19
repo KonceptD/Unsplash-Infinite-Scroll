@@ -7,6 +7,15 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  background: whitesmoke;
   font-family: "Cormorant Garamond", sans-serif;
   font-style: italic;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 35px;
+  margin-bottom: 15px;
+  font-size: 55px;
+  letter-spacing: 5px;
 }
