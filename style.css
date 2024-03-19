@@ -9,13 +9,41 @@ body {
   min-height: 100vh;
   background: whitesmoke;
   font-family: "Cormorant Garamond", sans-serif;
-  font-style: italic;
 }
 
 h1 {
   text-align: center;
   margin-top: 35px;
   margin-bottom: 15px;
-  font-size: 55px;
+  font-size: 45px;
   letter-spacing: 5px;
+}
+
+/* Loader */
+.loader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.loader img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* TODO: Check MDN for Margin code explanation */
+/* Image Container */
+.image-container {
+  margin: 10px 20%; 
+  /* 40% image and 40% margin */ 
+}
+
+.image-container img {
+  width: 100%;
+  margin-top: 10px;
 }
