@@ -1,14 +1,27 @@
 const imageContainer = document.getElementById('image-container');
 const loader = document.getElementById('loader');
 
+let ready = false; 
+let imagesLoaded = 0;
+let totalImages = 0; 
 // Remember, using 'let' as the values will change
 let photosArray = [];
 
 // Unsplash API 
-const count = 10;
+const count = 30;
 const apiKey = 'RVTkMRY3M9EIDu95ISRfVT9ZimeyM_stUa1uF2y9IVY'; // Use 'Access Key'
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
  
+
+// Check if all images were loaded 
+function imageLoaded() {
+    console.log('image loaded');
+    imagesLoaded++;
+    if (imagesLoaded  === totalImages) {
+        ready = true;
+        console.log('ready=', ready);
+    }
+}
 
 // Helper function to Set Atrributes on DOM Elements
 function setAttributes(element, attributes) {
@@ -20,6 +33,8 @@ function setAttributes(element, attributes) {
 
 // Create elements for links and photos; add to DOM
 function displayPhotos() {
+    totalImages = photosArray.length;
+    console.log('total images', totalImages);
     // run function for each photo in photosArray
     photosArray.forEach((photo) => {
         // create <a> element to link to Unsplash
@@ -36,7 +51,8 @@ function displayPhotos() {
             alt: photo.alt_description,
             title: photo.alt_description,
         });
-
+        // Event listener, check when each image is finished loading
+        img.addEventListener('load', imageLoaded);
         // put <img> inside <a>, then put both inside imageContainer Element
         item.appendChild(img);
         imageContainer.appendChild(item);
@@ -70,11 +86,11 @@ getPhotos();
 
 
 /*
-NOTES: 
+* NOTES: 
 
-Ctrl + click on variable/element will take you to the root of it, ie where its first instance/creation was made
+* Ctrl + click on variable/element will take you to the root of it, ie where its first instance/creation was made
 
-DRY = Don't Repeat Yourself. Don't use repeated code lines, create functionality to make it simpler. eg: helper function above
+* DRY = Don't Repeat Yourself. Don't use repeated code lines, create functionality to make it simpler. eg: helper function above
 eg:     item.setAttribute('href', photo.links.html);
         item.setAttribute('target', '_blank');
         img.setAttribute('src', photo.urls.regular);
