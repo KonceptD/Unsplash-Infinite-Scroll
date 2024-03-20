@@ -15,11 +15,12 @@ const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&coun
 
 // Check if all images were loaded 
 function imageLoaded() {
-    console.log('image loaded');
     imagesLoaded++;
+    // console.log(imagesLoaded);
     if (imagesLoaded  === totalImages) {
         ready = true;
-        console.log('ready=', ready);
+        loader.hidden = true;
+        // console.log('ready=', ready);
     }
 }
 
@@ -33,8 +34,9 @@ function setAttributes(element, attributes) {
 
 // Create elements for links and photos; add to DOM
 function displayPhotos() {
+    imagesLoaded = 0;
     totalImages = photosArray.length;
-    console.log('total images', totalImages);
+    // console.log('total images', totalImages);
     // run function for each photo in photosArray
     photosArray.forEach((photo) => {
         // create <a> element to link to Unsplash
@@ -75,9 +77,9 @@ async function getPhotos () {
 // Check to see if scrolling at the bottom of the page
 window.addEventListener('scroll', () => {
     
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 && ready) {
+        ready = false;
         getPhotos();
-        console.log('scrolled');
     }
 });
 
@@ -87,6 +89,8 @@ getPhotos();
 
 /*
 * NOTES: 
+
+* Commented out console logs isntead of removing, for code review/practice
 
 * Ctrl + click on variable/element will take you to the root of it, ie where its first instance/creation was made
 
